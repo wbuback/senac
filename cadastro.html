@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Senac</title>
+
+    <link rel="stylesheet" href="estilos/principal.css">
 </head>
 
 <body>
 
     <h1>Senac</h1>
-    
+
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="cadastro.html">Cadastro</a></li>
@@ -21,15 +23,48 @@
     <form>
         <p>
             <label for="cadastro_nome">Nome completo:</label>
-            <input id="cadastro_nome" type="text"></input>
+            <input id="cadastro_nome" type="text" placeholder="Nome completo" required></input>
         </p>
         <p>
             <label for="cadastro_email">E-mail:</label>
-            <input id="cadastro_email" type="email">
+            <input id="cadastro_email" type="email" placeholder="nome@dominio.com.br" required>
         </p>
         <p>
             <label for="cadastro_telefone">Telefone:</label>
-            <input id="cadastro_telefone" type="text">
+            <input id="cadastro_telefone" type="text" placeholder="(27) 99999-9999" required>
+        </p>
+        <p>
+        <fieldset>
+            <legend>Estado civil</legend>
+            <input id="estado_civil_solteiro" name="estado_civil" type="radio" value="Solteiro" required>
+            <label for="estado_civil_solteiro">Solteiro</label>
+
+            <input id="estado_civil_casado" name="estado_civil" type="radio" value="Casado" required>
+            <label for="estado_civil_casado">Casado</label>
+
+            <input id="estado_civil_divorciado" name="estado_civil" type="radio" value="Divorciado" required>
+            <label for="estado_civil_divorciado">Divorciado</label>
+
+            <input id="estado_civil_viuvo" name="estado_civil" type="radio" value="Viúvo" required>
+            <label for="estado_civil_viuvo">Viúvo</label>
+        </fieldset>
+        </p>
+        <p>
+        <fieldset>
+            <legend>Qual idiomas você fala?</legend>
+
+            <input id="idioma_pt" name="idioma" type="checkbox" value="pt">
+            <label for="idioma_pt">Português</label>
+
+            <input id="idioma_en" name="idioma" type="checkbox" value="en">
+            <label for="idioma_en">Inglês</label>
+
+            <input id="idioma_es" name="idioma" type="checkbox" value="es">
+            <label for="idioma_es">Espanhol</label>
+
+            <input id="idioma_fr" name="idioma" type="checkbox" value="fr">
+            <label for="idioma_fr">Francês</label>
+        </fieldset>
         </p>
         <p>
             <label for="cadastro_senha">Senha:</label>
@@ -40,14 +75,14 @@
             <input id="cadastro_senha_confirm" type="password">
         </p>
         <p>
-            <button type="reset">Limpar</button>
-            <button type="submit">Cadastrar</button>
+            <button type="reset" id="btn-limpar" class="btn">Limpar</button>
+            <button type="submit" id="btn-salvar" class="btn">Salvar</button>
         </p>
     </form>
 
     <hr>
     <h2>Usuários cadastrados</h2>
-    <table>
+    <table cellspacing="5" border="1" cellpadding="5" width="100%">
         <tr>
             <th>Nome</th>
             <th>E-mail</th>
