@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+body {
+    background-color: rgb(238, 241, 243);
+    font-family: "Google Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "GRAD" 0;
+    color:rgb(71, 68, 68);
+    padding: 0;
+    margin:0;
+}
+
+#navbar {
+    background-color: rgb(53, 48, 129);
+    margin-bottom: 20px;
+}
+
+#menu-principal {
+    width: 800px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    padding: 0;
+}
+
+#menu-principal li {
+    list-style: none;
+    display: inline-block;
+}
+
+a {
+    color:#fff;
+    background:rgba(0, 0, 0, 0.3);
+    display: block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 0, 0);
+    background:rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    background:#fff;
+    border: 1px solid #f1f1f1;
+    padding:25px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(53, 48, 129, 0.1);
+}
+
+.conteudo-tabela table {
+    border-collapse: collapse;
+    border: 1px solid #999;
+    background: #fff;
+}
+
+.conteudo-tabela table thead {
+    background: #999;
+}
+
+.conteudo-tabela table thead th {
+    padding: 5px;
+    text-align: left;
+}
+
+.conteudo-tabela table tbody td {
+    padding: 7px 10px;
+}
+
+tbody tr:nth-child(even) {
+    background:rgb(234, 246, 255)
+}
+
+tbody tr:hover {
+    background:rgb(255, 246, 234);
+    font-weight: 700;
+}
+
+
+.label-idioma {
+    background:#c0f3d7;
+    border: 1px solid #95bd98;
+    padding: 5px;
+    border-radius: 25px;
+    font-size:10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.label-idioma.pt{ 
+    background-color: #eeb8dc;
+    border-color: #b88aa8;
+}
