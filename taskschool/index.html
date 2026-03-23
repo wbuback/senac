@@ -205,69 +205,14 @@
                   O conteúdo abaixo é um exemplo estático para visualização
                   na Branch 1 (sem JavaScript).
                 -->
+                <!--
+                  O JavaScript popula este container dinamicamente.
+                  A mensagem "vazia" é exibida enquanto não há tarefas.
+                -->
                 <div id="cards-tarefas" class="grade-tarefas">
-
-                    <!--
-                      EXEMPLO de card de tarefa (estrutura estática).
-                      Na Branch 3, estes cards serão gerados dinamicamente.
-                      <article> representa um conteúdo independente e reutilizável.
-                    -->
-                    <article class="card-tarefa prioridade-alta">
-                        <div class="card-cabecalho">
-                            <h3 class="card-titulo">Estudar HTML Semântico</h3>
-                            <span class="badge badge-alta">Alta</span>
-                        </div>
-                        <p class="card-descricao">
-                            Revisar todas as tags semânticas do HTML5 e praticar com exercícios.
-                        </p>
-                        <div class="card-meta">
-                            <span class="card-categoria">📚 Estudo</span>
-                            <span class="card-data">Vence: 25/03/2024</span>
-                        </div>
-                        <div class="card-acoes">
-                            <button class="btn btn-concluir" title="Marcar como concluída">✓ Concluir</button>
-                            <button class="btn btn-editar" title="Editar tarefa">✏️ Editar</button>
-                            <button class="btn btn-excluir" title="Excluir tarefa">🗑️ Excluir</button>
-                        </div>
-                    </article>
-
-                    <article class="card-tarefa prioridade-media">
-                        <div class="card-cabecalho">
-                            <h3 class="card-titulo">Criar layout com CSS Grid</h3>
-                            <span class="badge badge-media">Média</span>
-                        </div>
-                        <p class="card-descricao">
-                            Implementar o layout da página principal usando CSS Grid.
-                        </p>
-                        <div class="card-meta">
-                            <span class="card-categoria">💼 Trabalho</span>
-                            <span class="card-data">Vence: 28/03/2024</span>
-                        </div>
-                        <div class="card-acoes">
-                            <button class="btn btn-concluir">✓ Concluir</button>
-                            <button class="btn btn-editar">✏️ Editar</button>
-                            <button class="btn btn-excluir">🗑️ Excluir</button>
-                        </div>
-                    </article>
-
-                    <article class="card-tarefa prioridade-baixa concluida">
-                        <div class="card-cabecalho">
-                            <h3 class="card-titulo">Instalar o VS Code</h3>
-                            <span class="badge badge-baixa">Baixa</span>
-                        </div>
-                        <p class="card-descricao">
-                            Instalar e configurar o editor de código Visual Studio Code.
-                        </p>
-                        <div class="card-meta">
-                            <span class="card-categoria">🏠 Pessoal</span>
-                            <span class="card-data">✅ Concluída</span>
-                        </div>
-                        <div class="card-acoes">
-                            <button class="btn btn-editar">✏️ Editar</button>
-                            <button class="btn btn-excluir">🗑️ Excluir</button>
-                        </div>
-                    </article>
-
+                    <div class="mensagem-vazia">
+                        <p>Nenhuma tarefa ainda. Adicione sua primeira tarefa acima!</p>
+                    </div>
                 </div>
             </section>
 
@@ -298,44 +243,11 @@
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
+                    <!-- O JavaScript popula este tbody dinamicamente -->
                     <tbody id="tbody-tarefas">
-                        <!-- Dados de exemplo para a Branch 1 -->
                         <tr>
-                            <td>1</td>
-                            <td>Estudar HTML Semântico</td>
-                            <td><span class="badge badge-alta">Alta</span></td>
-                            <td>📚 Estudo</td>
-                            <td>25/03/2024</td>
-                            <td><span class="status pendente">Pendente</span></td>
-                            <td>
-                                <button class="btn btn-concluir">✓</button>
-                                <button class="btn btn-editar">✏️</button>
-                                <button class="btn btn-excluir">🗑️</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Criar layout com CSS Grid</td>
-                            <td><span class="badge badge-media">Média</span></td>
-                            <td>💼 Trabalho</td>
-                            <td>28/03/2024</td>
-                            <td><span class="status pendente">Pendente</span></td>
-                            <td>
-                                <button class="btn btn-concluir">✓</button>
-                                <button class="btn btn-editar">✏️</button>
-                                <button class="btn btn-excluir">🗑️</button>
-                            </td>
-                        </tr>
-                        <tr class="linha-concluida">
-                            <td>3</td>
-                            <td>Instalar o VS Code</td>
-                            <td><span class="badge badge-baixa">Baixa</span></td>
-                            <td>🏠 Pessoal</td>
-                            <td>—</td>
-                            <td><span class="status concluida">Concluída</span></td>
-                            <td>
-                                <button class="btn btn-editar">✏️</button>
-                                <button class="btn btn-excluir">🗑️</button>
+                            <td colspan="7" style="text-align:center; padding: 24px; color: #64748B;">
+                                Nenhuma tarefa ainda.
                             </td>
                         </tr>
                     </tbody>
@@ -355,22 +267,22 @@
                     <article class="stat-card">
                         <h3>Total de Tarefas</h3>
                         <!-- Span com id para o JavaScript atualizar o número -->
-                        <p class="stat-numero" id="stat-total">3</p>
+                        <p class="stat-numero" id="stat-total">0</p>
                     </article>
 
                     <article class="stat-card">
                         <h3>Concluídas</h3>
-                        <p class="stat-numero" id="stat-concluidas">1</p>
+                        <p class="stat-numero" id="stat-concluidas">0</p>
                     </article>
 
                     <article class="stat-card">
                         <h3>Pendentes</h3>
-                        <p class="stat-numero" id="stat-pendentes">2</p>
+                        <p class="stat-numero" id="stat-pendentes">0</p>
                     </article>
 
                     <article class="stat-card">
                         <h3>Alta Prioridade</h3>
-                        <p class="stat-numero" id="stat-alta">1</p>
+                        <p class="stat-numero" id="stat-alta">0</p>
                     </article>
 
                 </div>
@@ -392,11 +304,11 @@
     </footer>
 
     <!--
-      BRANCH 3: Aqui será linkado o arquivo JavaScript externo.
-      O script fica no final do <body> para garantir que o HTML
+      Script JavaScript externo.
+      Fica no final do <body> para garantir que o HTML
       já foi carregado antes de o JS tentar manipulá-lo.
-      <script src="app.js"></script>
     -->
+    <script src="app.js"></script>
 
 </body>
 </html>
