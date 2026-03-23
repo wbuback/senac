@@ -1,0 +1,791 @@
+/*
+  TASKSCHOOL — Folha de Estilos
+  ================================
+  Branch 2 — HTML + CSS
+
+  Conceitos demonstrados neste arquivo:
+  - Variáveis CSS (Custom Properties)
+  - Seletores: tag, classe, ID, pseudo-classes, pseudo-elementos
+  - Box Model: margin, padding, border, width, height
+  - Flexbox: display flex, justify-content, align-items, gap
+  - CSS Grid: grid-template-columns, repeat, auto-fill, minmax
+  - Responsividade com Media Queries (Mobile First)
+  - Transições e estados (:hover, :focus, :active)
+  - Reset e Normalização básica
+
+  Índice:
+  1.  Variáveis e Reset
+  2.  Tipografia Base
+  3.  Layout Geral (container)
+  4.  Header
+  5.  Navegação
+  6.  Formulário
+  7.  Controles (filtros e busca)
+  8.  Cards de Tarefas
+  9.  Tabela
+  10. Estatísticas
+  11. Footer
+  12. Badges e Status
+  13. Botões
+  14. Utilitários
+  15. Responsividade (Media Queries)
+*/
+
+
+/* ================================================
+   1. VARIÁVEIS CSS E RESET
+   ================================================
+   Custom Properties (variáveis) são definidas em :root
+   para reutilização em todo o documento.
+   Facilita a troca de tema e manutenção do código.
+   ================================================ */
+:root {
+    /* Paleta de cores principal */
+    --cor-primaria:    #1E2761;   /* Azul escuro (header, títulos) */
+    --cor-secundaria:  #0891B2;   /* Teal (destaques, links, botões) */
+    --cor-acento:      #CADCFC;   /* Azul claro (fundos, badges) */
+
+    /* Prioridades */
+    --cor-alta:    #EF4444;   /* Vermelho */
+    --cor-media:   #F59E0B;   /* Amarelo/Âmbar */
+    --cor-baixa:   #10B981;   /* Verde */
+
+    /* Neutras */
+    --cor-fundo:      #F8FAFC;   /* Fundo da página */
+    --cor-superfície: #FFFFFF;   /* Fundo de cards e seções */
+    --cor-borda:      #E2E8F0;   /* Bordas sutis */
+    --cor-texto:      #1E293B;   /* Texto principal */
+    --cor-texto-muted:#64748B;   /* Texto secundário (cinza) */
+
+    /* Tipografia */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --tamanho-base:    16px;
+    --linha-base:      1.6;
+
+    /* Espaçamento (baseado em múltiplos de 8px) */
+    --espaco-xs:  4px;
+    --espaco-sm:  8px;
+    --espaco-md:  16px;
+    --espaco-lg:  24px;
+    --espaco-xl:  32px;
+    --espaco-2xl: 48px;
+
+    /* Bordas */
+    --raio-sm:  4px;
+    --raio-md:  8px;
+    --raio-lg:  12px;
+    --raio-xl:  16px;
+
+    /* Sombras */
+    --sombra-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
+    --sombra-md: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --sombra-lg: 0 10px 25px rgba(0, 0, 0, 0.10);
+
+    /* Transições */
+    --transicao: 0.2s ease;
+}
+
+/*
+  Reset básico: remove margens e paddings padrão do navegador.
+  box-sizing: border-box faz padding e border não aumentar o tamanho total.
+*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove estilo padrão de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove sublinhado de links; herda cor do pai */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Imagens responsivas por padrão */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ================================================
+   2. TIPOGRAFIA BASE
+   ================================================ */
+body {
+    font-family: var(--fonte-principal);
+    font-size: var(--tamanho-base);
+    line-height: var(--linha-base);
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}
+
+h1 { font-size: 2rem;   font-weight: 700; }
+h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: var(--espaco-lg); }
+h3 { font-size: 1.1rem; font-weight: 600; }
+
+p  { color: var(--cor-texto-muted); }
+
+small {
+    font-size: 0.8rem;
+    color: var(--cor-texto-muted);
+}
+
+
+/* ================================================
+   3. LAYOUT GERAL — CONTAINER
+   ================================================
+   .container limita a largura do conteúdo e
+   centraliza na página com margin: 0 auto.
+   ================================================ */
+.container {
+    width: 100%;
+    max-width: 1200px;    /* Largura máxima no desktop */
+    margin: 0 auto;       /* Centraliza horizontalmente */
+    padding: 0 var(--espaco-md); /* Padding lateral */
+}
+
+/* Cada seção tem espaçamento vertical uniforme */
+section {
+    margin-bottom: var(--espaco-2xl);
+}
+
+
+/* ================================================
+   4. HEADER
+   ================================================
+   display: flex distribui os filhos em linha.
+   justify-content: space-between afasta logo e nav.
+   align-items: center alinha verticalmente.
+   ================================================ */
+header {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: var(--espaco-lg) 0;
+    box-shadow: var(--sombra-md);
+
+    /* Posição fixa no topo ao rolar a página */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    /* Flexbox: logo à esquerda, nav à direita */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--espaco-md);
+}
+
+header h1 {
+    color: white;
+    font-size: 1.75rem;
+}
+
+header p {
+    color: var(--cor-acento);
+    font-size: 0.875rem;
+    /* Em telas pequenas, este parágrafo fica oculto */
+    display: none;
+}
+
+/* Em telas maiores, exibe o subtítulo */
+@media (min-width: 768px) {
+    header p { display: block; }
+}
+
+
+/* ================================================
+   5. NAVEGAÇÃO
+   ================================================ */
+nav ul {
+    display: flex;            /* Itens em linha */
+    flex-direction: row;
+    gap: var(--espaco-md);    /* Espaço entre links */
+}
+
+nav a {
+    color: var(--cor-acento);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: var(--espaco-xs) var(--espaco-sm);
+    border-radius: var(--raio-sm);
+    transition: background-color var(--transicao), color var(--transicao);
+}
+
+/* :hover — estado quando o mouse está sobre o elemento */
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+
+/* ================================================
+   6. FORMULÁRIO
+   ================================================ */
+.secao-form {
+    background-color: var(--cor-superfície);
+    border-radius: var(--raio-lg);
+    padding: var(--espaco-xl);
+    box-shadow: var(--sombra-sm);
+    border: 1px solid var(--cor-borda);
+}
+
+/* Cada grupo label + input */
+.form-grupo {
+    margin-bottom: var(--espaco-lg);
+    display: flex;
+    flex-direction: column; /* Label acima do input */
+    gap: var(--espaco-xs);
+}
+
+/* Label: rótulo do campo */
+.form-grupo label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
+}
+
+/* Estilo unificado para input, textarea e select */
+.form-grupo input,
+.form-grupo textarea,
+.form-grupo select {
+    width: 100%;
+    padding: var(--espaco-sm) var(--espaco-md);
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio-md);
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+    transition: border-color var(--transicao), box-shadow var(--transicao);
+}
+
+/* :focus — estado quando o campo está ativo (com foco) */
+.form-grupo input:focus,
+.form-grupo textarea:focus,
+.form-grupo select:focus {
+    outline: none;                   /* Remove o outline padrão do navegador */
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15); /* Anel de foco visível */
+}
+
+/* :valid — campo preenchido corretamente */
+.form-grupo input:valid:not(:placeholder-shown) {
+    border-color: var(--cor-baixa);
+}
+
+/* :invalid — campo com erro */
+.form-grupo input:invalid:not(:placeholder-shown) {
+    border-color: var(--cor-alta);
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+    min-height: 100px;
+}
+
+/* Texto de dica abaixo do campo */
+.dica {
+    color: var(--cor-texto-muted);
+}
+
+/* Área de botões do formulário */
+.form-acoes {
+    display: flex;
+    gap: var(--espaco-md);
+    flex-wrap: wrap;  /* Quebra linha em telas pequenas */
+    margin-top: var(--espaco-sm);
+}
+
+
+/* ================================================
+   7. CONTROLES — FILTROS E BUSCA
+   ================================================ */
+.secao-controles {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-md);
+}
+
+@media (min-width: 640px) {
+    .secao-controles {
+        flex-direction: row;       /* Busca e filtros lado a lado */
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+/* Campo de busca */
+.busca {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-xs);
+    flex: 1;              /* Ocupa o espaço disponível */
+    max-width: 350px;
+}
+
+.busca input {
+    padding: var(--espaco-sm) var(--espaco-md);
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio-md);
+    font-size: 0.95rem;
+    width: 100%;
+    transition: border-color var(--transicao);
+}
+
+.busca input:focus {
+    outline: none;
+    border-color: var(--cor-secundaria);
+}
+
+/* Grupo de botões de filtro */
+.filtros {
+    display: flex;
+    gap: var(--espaco-sm);
+    flex-wrap: wrap;
+}
+
+.btn-filtro {
+    padding: var(--espaco-xs) var(--espaco-md);
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--raio-xl);   /* Bordas bem arredondadas (pill) */
+    background-color: transparent;
+    color: var(--cor-texto-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transicao);
+}
+
+.btn-filtro:hover {
+    border-color: var(--cor-secundaria);
+    color: var(--cor-secundaria);
+}
+
+/* .ativo é adicionado pelo JavaScript ao filtro selecionado */
+.btn-filtro.ativo {
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    color: white;
+}
+
+
+/* ================================================
+   8. CARDS DE TAREFAS — CSS GRID
+   ================================================
+   grid-template-columns com auto-fill e minmax cria
+   um grid responsivo que se adapta ao espaço disponível.
+   ================================================ */
+.secao-lista h2 {
+    margin-bottom: var(--espaco-md);
+}
+
+/* Grid de cards: ajusta automaticamente o número de colunas */
+.grade-tarefas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--espaco-lg);
+}
+
+/* Card individual de tarefa */
+.card-tarefa {
+    background-color: var(--cor-superfície);
+    border-radius: var(--raio-lg);
+    padding: var(--espaco-lg);
+    box-shadow: var(--sombra-sm);
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid transparent; /* Borda lateral colorida por prioridade */
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-sm);
+    transition: box-shadow var(--transicao), transform var(--transicao);
+}
+
+/* Efeito hover: eleva o card visualmente */
+.card-tarefa:hover {
+    box-shadow: var(--sombra-lg);
+    transform: translateY(-2px);
+}
+
+/* Bordas coloridas por prioridade */
+.card-tarefa.prioridade-alta  { border-left-color: var(--cor-alta); }
+.card-tarefa.prioridade-media { border-left-color: var(--cor-media); }
+.card-tarefa.prioridade-baixa { border-left-color: var(--cor-baixa); }
+
+/* Card concluído: aparência atenuada */
+.card-tarefa.concluida {
+    opacity: 0.6;
+    border-left-color: var(--cor-texto-muted);
+}
+
+.card-tarefa.concluida .card-titulo {
+    text-decoration: line-through;
+    color: var(--cor-texto-muted);
+}
+
+/* Cabeçalho do card: título + badge */
+.card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--espaco-sm);
+}
+
+.card-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    flex: 1;    /* Ocupa espaço restante, badge não cresce */
+}
+
+.card-descricao {
+    font-size: 0.9rem;
+    color: var(--cor-texto-muted);
+    line-height: 1.5;
+}
+
+/* Metadados: categoria e data */
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--cor-texto-muted);
+    padding-top: var(--espaco-sm);
+    border-top: 1px solid var(--cor-borda);
+}
+
+/* Botões de ação do card */
+.card-acoes {
+    display: flex;
+    gap: var(--espaco-xs);
+    flex-wrap: wrap;
+    margin-top: var(--espaco-xs);
+}
+
+/* Mensagem exibida quando não há tarefas */
+.mensagem-vazia {
+    grid-column: 1 / -1;     /* Ocupa toda a largura do grid */
+    text-align: center;
+    padding: var(--espaco-2xl);
+    color: var(--cor-texto-muted);
+    border: 2px dashed var(--cor-borda);
+    border-radius: var(--raio-lg);
+}
+
+
+/* ================================================
+   9. TABELA DE TAREFAS
+   ================================================ */
+.secao-tabela {
+    overflow-x: auto;   /* Scroll horizontal em telas pequenas */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;  /* Remove espaço duplo entre bordas */
+    background-color: var(--cor-superfície);
+    border-radius: var(--raio-lg);
+    overflow: hidden;
+    box-shadow: var(--sombra-sm);
+    font-size: 0.9rem;
+}
+
+/* Cabeçalho da tabela */
+thead {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+thead th {
+    padding: var(--espaco-md) var(--espaco-lg);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Células de dado */
+tbody td {
+    padding: var(--espaco-md) var(--espaco-lg);
+    border-bottom: 1px solid var(--cor-borda);
+    vertical-align: middle;
+}
+
+/* Zebra: linhas alternadas com cor levemente diferente */
+tbody tr:nth-child(even) {
+    background-color: #F8FAFC;
+}
+
+/* Hover na linha */
+tbody tr:hover {
+    background-color: var(--cor-acento);
+    transition: background-color var(--transicao);
+}
+
+/* Linha de tarefa concluída */
+tbody tr.linha-concluida td {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+/* Botões dentro da tabela: menores e compactos */
+tbody .btn {
+    padding: var(--espaco-xs) var(--espaco-sm);
+    font-size: 0.8rem;
+}
+
+
+/* ================================================
+   10. ESTATÍSTICAS
+   ================================================ */
+.grade-stats {
+    display: grid;
+    /* 4 colunas iguais; cada uma com mínimo de 150px */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--espaco-lg);
+}
+
+.stat-card {
+    background-color: var(--cor-superfície);
+    border-radius: var(--raio-lg);
+    padding: var(--espaco-xl);
+    text-align: center;
+    box-shadow: var(--sombra-sm);
+    border: 1px solid var(--cor-borda);
+    transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-md);
+}
+
+.stat-card h3 {
+    font-size: 0.85rem;
+    color: var(--cor-texto-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--espaco-sm);
+}
+
+/* Número grande em destaque */
+.stat-numero {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    line-height: 1;
+}
+
+
+/* ================================================
+   11. FOOTER
+   ================================================ */
+footer {
+    background-color: var(--cor-primaria);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: var(--espaco-xl) 0;
+    margin-top: var(--espaco-2xl);
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+    line-height: 2;
+}
+
+
+/* ================================================
+   12. BADGES — INDICADORES DE PRIORIDADE / STATUS
+   ================================================
+   Badges são pequenas etiquetas coloridas para
+   indicar estado ou categoria de um item.
+   ================================================ */
+.badge {
+    display: inline-block;
+    padding: 2px var(--espaco-sm);
+    border-radius: var(--raio-xl);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;  /* Não quebra em duas linhas */
+}
+
+.badge-alta  { background-color: #FEE2E2; color: #991B1B; }
+.badge-media { background-color: #FEF3C7; color: #92400E; }
+.badge-baixa { background-color: #D1FAE5; color: #065F46; }
+
+/* Status das tarefas */
+.status {
+    display: inline-block;
+    padding: 2px var(--espaco-sm);
+    border-radius: var(--raio-xl);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status.pendente  { background-color: #FEF3C7; color: #92400E; }
+.status.concluida { background-color: #D1FAE5; color: #065F46; }
+
+
+/* ================================================
+   13. BOTÕES
+   ================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espaco-xs);
+    padding: var(--espaco-sm) var(--espaco-md);
+    border: none;
+    border-radius: var(--raio-md);
+    font-family: var(--fonte-principal);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transicao);
+    white-space: nowrap;
+}
+
+/* Botão primário: ação principal */
+.btn-primario {
+    background-color: var(--cor-secundaria);
+    color: white;
+}
+
+.btn-primario:hover {
+    background-color: #0E7490;  /* Tom mais escuro ao passar o mouse */
+    transform: translateY(-1px);
+    box-shadow: var(--sombra-md);
+}
+
+/* Botão secundário: ação alternativa */
+.btn-secundario {
+    background-color: transparent;
+    color: var(--cor-texto-muted);
+    border: 2px solid var(--cor-borda);
+}
+
+.btn-secundario:hover {
+    border-color: var(--cor-texto-muted);
+    color: var(--cor-texto);
+}
+
+/* Botões de ação dos cards */
+.btn-concluir {
+    background-color: #D1FAE5;
+    color: #065F46;
+    font-size: 0.8rem;
+    padding: var(--espaco-xs) var(--espaco-sm);
+}
+.btn-concluir:hover { background-color: #A7F3D0; }
+
+.btn-editar {
+    background-color: #E0F2FE;
+    color: #075985;
+    font-size: 0.8rem;
+    padding: var(--espaco-xs) var(--espaco-sm);
+}
+.btn-editar:hover { background-color: #BAE6FD; }
+
+.btn-excluir {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    font-size: 0.8rem;
+    padding: var(--espaco-xs) var(--espaco-sm);
+}
+.btn-excluir:hover { background-color: #FECACA; }
+
+/* :active — estado quando o botão é clicado */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* ================================================
+   14. UTILITÁRIOS
+   ================================================
+   Classes genéricas reutilizáveis em qualquer lugar.
+   ================================================ */
+.text-center { text-align: center; }
+.text-muted  { color: var(--cor-texto-muted); }
+.hidden      { display: none; }
+
+/* Espaçamento padrão para o topo do conteúdo principal */
+main {
+    padding: var(--espaco-2xl) 0;
+}
+
+
+/* ================================================
+   15. RESPONSIVIDADE — MEDIA QUERIES
+   ================================================
+   Estratégia: Mobile First (base para mobile,
+   progressivamente melhorado para telas maiores).
+
+   Breakpoints:
+   - 480px  : Smartphones em landscape
+   - 640px  : Tablets pequenos
+   - 768px  : Tablets
+   - 1024px : Desktops
+   - 1280px : Desktops grandes
+   ================================================ */
+
+/* -- Mobile até 479px (default acima, sem media query) -- */
+
+/* -- Smartphones landscape / pequenos tablets (480px+) -- */
+@media (min-width: 480px) {
+    .form-acoes {
+        flex-direction: row;  /* Botões lado a lado */
+    }
+}
+
+/* -- Tablets (768px+) -- */
+@media (min-width: 768px) {
+    /* Formulário em duas colunas */
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 var(--espaco-lg);
+    }
+
+    /* Alguns grupos ocupam as 2 colunas */
+    .form-grupo:first-child,   /* Título */
+    .form-grupo:nth-child(2),  /* Descrição */
+    .form-acoes {
+        grid-column: 1 / -1;
+    }
+
+    /* Grid de cards: mínimo 2 por linha */
+    .grade-tarefas {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+/* -- Desktop (1024px+) -- */
+@media (min-width: 1024px) {
+    /* Header com mais respiro */
+    header {
+        padding: var(--espaco-xl) 0;
+    }
+
+    /* Grid de cards: mínimo 3 por linha */
+    .grade-tarefas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Stats sempre em 4 colunas */
+    .grade-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
