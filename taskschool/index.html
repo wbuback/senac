@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!--
+  TASKSCHOOL - Gerenciador de Tarefas
+  ====================================
+  Branch 1 - Apenas HTML
+
+  Conceitos demonstrados nesta branch:
+  - Estrutura básica de um documento HTML5
+  - Tags semânticas: header, main, section, article, footer
+  - Formulários: form, input, textarea, select, button, label
+  - Tabelas: table, thead, tbody, tr, th, td
+  - Hierarquia de headings: h1, h2, h3
+  - Atributos de acessibilidade: for, id, required, placeholder
+-->
+<html lang="pt-BR">
+
+<head>
+    <!-- Codificação de caracteres: garante suporte a acentos e caracteres especiais -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport: essencial para responsividade em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Descrição para motores de busca (SEO) -->
+    <meta name="description" content="Taskschool - Gerencie suas tarefas de forma simples e eficiente">
+
+    <!-- Título da aba/janela do navegador -->
+    <title>Taskschool — Gerenciador de Tarefas</title>
+
+    <!--
+      BRANCH 2: Aqui será linkado o arquivo CSS externo
+      <link rel="stylesheet" href="style.css">
+    -->
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <!--
+      <header> representa o cabeçalho da página.
+      Contém o nome da aplicação e a navegação principal.
+    -->
+    <header>
+        <div class="container">
+            <!-- Nome da aplicação -->
+            <h1>Taskschool</h1>
+            <p>Seu gerenciador de tarefas pessoal</p>
+
+            <!-- Navegação principal -->
+            <nav>
+                <ul>
+                    <li><a href="#nova-tarefa">Adicionar Tarefa</a></li>
+                    <li><a href="#lista-tarefas">Minhas Tarefas</a></li>
+                    <li><a href="#estatisticas">Estatísticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <!--
+      <main> contém o conteúdo principal da página.
+      Deve haver apenas um <main> por página.
+    -->
+    <main>
+        <div class="container">
+
+            <!-- ---- SEÇÃO: ADICIONAR TAREFA ---- -->
+            <!--
+              <section> agrupa conteúdo temático relacionado.
+              O atributo id permite navegação via âncora (#nova-tarefa).
+            -->
+            <section id="nova-tarefa" class="secao-form">
+                <h2>Adicionar Nova Tarefa</h2>
+
+                <!--
+                  FORMULÁRIO
+                  ===========
+                  action: para onde os dados são enviados (backend)
+                  method: POST envia dados no corpo da requisição
+
+                  BRANCH 3: o action será tratado pelo JavaScript,
+                  substituindo o envio tradicional para o servidor.
+                -->
+                <form id="tarefa-form" action="#" method="post">
+
+                    <!-- Grupo: Título -->
+                    <div class="form-grupo">
+                        <!--
+                          <label> associado ao input via atributo "for" + "id".
+                          Melhora a acessibilidade: clicar no label foca o input.
+                        -->
+                        <label for="titulo">Título da Tarefa *</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Ex: Estudar HTML e CSS"
+                            required
+                            maxlength="100"
+                        >
+                        <!-- Dica de validação para o usuário -->
+                        <small class="dica">Máximo 100 caracteres. Campo obrigatório.</small>
+                    </div>
+
+                    <!-- Grupo: Descrição -->
+                    <div class="form-grupo">
+                        <label for="descricao">Descrição</label>
+                        <!--
+                          <textarea> para textos longos.
+                          rows: altura inicial em linhas visíveis.
+                        -->
+                        <textarea
+                            id="descricao"
+                            name="descricao"
+                            placeholder="Descreva os detalhes da tarefa (opcional)..."
+                            rows="4"
+                            maxlength="500"
+                        ></textarea>
+                        <small class="dica">Máximo 500 caracteres.</small>
+                    </div>
+
+                    <!-- Grupo: Prioridade -->
+                    <div class="form-grupo">
+                        <label for="prioridade">Prioridade *</label>
+                        <!--
+                          <select> cria um menu suspenso (dropdown).
+                          <option> define cada item da lista.
+                        -->
+                        <select id="prioridade" name="prioridade" required>
+                            <option value="">Selecione a prioridade</option>
+                            <option value="alta">🔴 Alta</option>
+                            <option value="media">🟡 Média</option>
+                            <option value="baixa">🟢 Baixa</option>
+                        </select>
+                    </div>
+
+                    <!-- Grupo: Data de Vencimento -->
+                    <div class="form-grupo">
+                        <label for="vencimento">Data de Vencimento</label>
+                        <!--
+                          type="date" exibe um seletor de data nativo do navegador.
+                        -->
+                        <input
+                            type="date"
+                            id="vencimento"
+                            name="vencimento"
+                        >
+                    </div>
+
+                    <!-- Grupo: Categoria -->
+                    <div class="form-grupo">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="estudo">📚 Estudo</option>
+                            <option value="trabalho">💼 Trabalho</option>
+                            <option value="pessoal">🏠 Pessoal</option>
+                            <option value="saude">❤️ Saúde</option>
+                        </select>
+                    </div>
+
+                    <!-- Botões de ação do formulário -->
+                    <div class="form-acoes">
+                        <!--
+                          type="submit": envia o formulário.
+                          type="reset": limpa todos os campos do formulário.
+                        -->
+                        <button type="submit" class="btn btn-primario">Adicionar Tarefa</button>
+                        <button type="reset" class="btn btn-secundario">Limpar</button>
+                    </div>
+
+                </form>
+            </section>
+
+            <!-- ---- SEÇÃO: FILTROS E BUSCA ---- -->
+            <section id="controles" class="secao-controles">
+                <div class="busca">
+                    <label for="busca">Buscar Tarefas</label>
+                    <input
+                        type="search"
+                        id="busca"
+                        name="busca"
+                        placeholder="Digite para buscar..."
+                    >
+                </div>
+
+                <div class="filtros">
+                    <!--
+                      Botões de filtro: cada um tem um atributo data-filtro
+                      usado pelo JavaScript para filtrar as tarefas.
+                      Atributos "data-*" são atributos customizados HTML5.
+                    -->
+                    <button class="btn-filtro ativo" data-filtro="todas">Todas</button>
+                    <button class="btn-filtro" data-filtro="pendentes">Pendentes</button>
+                    <button class="btn-filtro" data-filtro="concluidas">Concluídas</button>
+                    <button class="btn-filtro" data-filtro="alta">Alta Prioridade</button>
+                </div>
+            </section>
+
+            <!-- ---- SEÇÃO: LISTA DE TAREFAS (CARDS) ---- -->
+            <section id="lista-tarefas" class="secao-lista">
+                <h2>Minhas Tarefas</h2>
+
+                <!--
+                  Esta div recebe os cards de tarefa via JavaScript.
+                  O conteúdo abaixo é um exemplo estático para visualização
+                  na Branch 1 (sem JavaScript).
+                -->
+                <div id="cards-tarefas" class="grade-tarefas">
+
+                    <!--
+                      EXEMPLO de card de tarefa (estrutura estática).
+                      Na Branch 3, estes cards serão gerados dinamicamente.
+                      <article> representa um conteúdo independente e reutilizável.
+                    -->
+                    <article class="card-tarefa prioridade-alta">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Estudar HTML Semântico</h3>
+                            <span class="badge badge-alta">Alta</span>
+                        </div>
+                        <p class="card-descricao">
+                            Revisar todas as tags semânticas do HTML5 e praticar com exercícios.
+                        </p>
+                        <div class="card-meta">
+                            <span class="card-categoria">📚 Estudo</span>
+                            <span class="card-data">Vence: 25/03/2024</span>
+                        </div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir" title="Marcar como concluída">✓ Concluir</button>
+                            <button class="btn btn-editar" title="Editar tarefa">✏️ Editar</button>
+                            <button class="btn btn-excluir" title="Excluir tarefa">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-media">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Criar layout com CSS Grid</h3>
+                            <span class="badge badge-media">Média</span>
+                        </div>
+                        <p class="card-descricao">
+                            Implementar o layout da página principal usando CSS Grid.
+                        </p>
+                        <div class="card-meta">
+                            <span class="card-categoria">💼 Trabalho</span>
+                            <span class="card-data">Vence: 28/03/2024</span>
+                        </div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-baixa concluida">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Instalar o VS Code</h3>
+                            <span class="badge badge-baixa">Baixa</span>
+                        </div>
+                        <p class="card-descricao">
+                            Instalar e configurar o editor de código Visual Studio Code.
+                        </p>
+                        <div class="card-meta">
+                            <span class="card-categoria">🏠 Pessoal</span>
+                            <span class="card-data">✅ Concluída</span>
+                        </div>
+                        <div class="card-acoes">
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ---- SEÇÃO: TABELA DE TAREFAS ---- -->
+            <!--
+              Tabela é ideal para exibir dados estruturados em linhas e colunas.
+              Elementos:
+              - <table>  : container da tabela
+              - <thead>  : cabeçalho da tabela (rótulos das colunas)
+              - <tbody>  : corpo com os dados
+              - <tr>     : linha da tabela (table row)
+              - <th>     : célula de cabeçalho (table header) — negrito por padrão
+              - <td>     : célula de dado (table data)
+              - colspan  : mescla colunas horizontalmente
+            -->
+            <section id="tabela-tarefas" class="secao-tabela">
+                <h2>Visão em Tabela</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Prioridade</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Vencimento</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-tarefas">
+                        <!-- Dados de exemplo para a Branch 1 -->
+                        <tr>
+                            <td>1</td>
+                            <td>Estudar HTML Semântico</td>
+                            <td><span class="badge badge-alta">Alta</span></td>
+                            <td>📚 Estudo</td>
+                            <td>25/03/2024</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Criar layout com CSS Grid</td>
+                            <td><span class="badge badge-media">Média</span></td>
+                            <td>💼 Trabalho</td>
+                            <td>28/03/2024</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr class="linha-concluida">
+                            <td>3</td>
+                            <td>Instalar o VS Code</td>
+                            <td><span class="badge badge-baixa">Baixa</span></td>
+                            <td>🏠 Pessoal</td>
+                            <td>—</td>
+                            <td><span class="status concluida">Concluída</span></td>
+                            <td>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ---- SEÇÃO: ESTATÍSTICAS ---- -->
+            <section id="estatisticas" class="secao-stats">
+                <h2>Estatísticas</h2>
+
+                <!--
+                  <article> dentro de <section> representa
+                  cada card de estatística como item independente.
+                -->
+                <div class="grade-stats">
+
+                    <article class="stat-card">
+                        <h3>Total de Tarefas</h3>
+                        <!-- Span com id para o JavaScript atualizar o número -->
+                        <p class="stat-numero" id="stat-total">3</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Concluídas</h3>
+                        <p class="stat-numero" id="stat-concluidas">1</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Pendentes</h3>
+                        <p class="stat-numero" id="stat-pendentes">2</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Alta Prioridade</h3>
+                        <p class="stat-numero" id="stat-alta">1</p>
+                    </article>
+
+                </div>
+            </section>
+
+        </div><!-- /.container -->
+    </main>
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <!--
+      <footer> contém informações complementares:
+      copyright, links úteis, créditos, etc.
+    -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Taskschool &mdash; Projeto Educacional SENAC</p>
+            <p>Desenvolvido na disciplina de Desenvolvimento Frontend (UC2)</p>
+        </div>
+    </footer>
+
+    <!--
+      BRANCH 3: Aqui será linkado o arquivo JavaScript externo.
+      O script fica no final do <body> para garantir que o HTML
+      já foi carregado antes de o JS tentar manipulá-lo.
+      <script src="app.js"></script>
+    -->
+
+</body>
+</html>
