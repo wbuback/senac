@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taskschool - Tarefas em tabela">
+    <title>Taskschool — Tabela</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Taskschool</h1>
+            <p>Seu gerenciador de tarefas pessoal</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Login</a></li>
+                    <li><a href="nova-tarefa.html">Nova Tarefa</a></li>
+                    <li><a href="tabela.html">Tabela</a></li>
+                    <li><a href="cards.html">Cards</a></li>
+                    <li><a href="estatisticas.html">Estatísticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="tabela-tarefas" class="secao-tabela">
+                <h2>Tarefas — Visão em Tabela</h2>
+
+                <div class="filtros filtros-tabela">
+                    <span class="filtro-label">Filtrar por status:</span>
+                    <button class="btn-filtro ativo" data-filtro="todas">Todas</button>
+                    <button class="btn-filtro" data-filtro="pendente">Pendentes</button>
+                    <button class="btn-filtro" data-filtro="em-andamento">Em andamento</button>
+                    <button class="btn-filtro" data-filtro="concluida">Concluídas</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Prioridade</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Vencimento</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-tarefas">
+                        <tr>
+                            <td>1</td>
+                            <td>Estudar HTML Semântico</td>
+                            <td><span class="badge badge-alta">Alta</span></td>
+                            <td>Estudo</td>
+                            <td>28/03/2026</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Criar layout com CSS Grid</td>
+                            <td><span class="badge badge-media">Média</span></td>
+                            <td>Trabalho</td>
+                            <td>30/03/2026</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr class="linha-concluida">
+                            <td>3</td>
+                            <td>Instalar o VS Code</td>
+                            <td><span class="badge badge-baixa">Baixa</span></td>
+                            <td>Pessoal</td>
+                            <td>—</td>
+                            <td><span class="status concluida">Concluída</span></td>
+                            <td>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Praticar Flexbox</td>
+                            <td><span class="badge badge-alta">Alta</span></td>
+                            <td>Estudo</td>
+                            <td>29/03/2026</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr class="linha-concluida">
+                            <td>5</td>
+                            <td>Configurar Git</td>
+                            <td><span class="badge badge-baixa">Baixa</span></td>
+                            <td>Trabalho</td>
+                            <td>—</td>
+                            <td><span class="status concluida">Concluída</span></td>
+                            <td>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Fazer exercício de JavaScript</td>
+                            <td><span class="badge badge-media">Média</span></td>
+                            <td>Estudo</td>
+                            <td>02/04/2026</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr class="linha-concluida">
+                            <td>7</td>
+                            <td>Organizar pasta do projeto</td>
+                            <td><span class="badge badge-baixa">Baixa</span></td>
+                            <td>Pessoal</td>
+                            <td>—</td>
+                            <td><span class="status concluida">Concluída</span></td>
+                            <td>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Estudar responsividade</td>
+                            <td><span class="badge badge-alta">Alta</span></td>
+                            <td>Estudo</td>
+                            <td>01/04/2026</td>
+                            <td><span class="status em-andamento">Em andamento</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr class="linha-concluida">
+                            <td>9</td>
+                            <td>Criar repositório no GitHub</td>
+                            <td><span class="badge badge-media">Média</span></td>
+                            <td>Trabalho</td>
+                            <td>—</td>
+                            <td><span class="status concluida">Concluída</span></td>
+                            <td>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Revisar anotações da aula</td>
+                            <td><span class="badge badge-baixa">Baixa</span></td>
+                            <td>Estudo</td>
+                            <td>03/04/2026</td>
+                            <td><span class="status pendente">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-concluir">✓</button>
+                                <button class="btn btn-editar">✏️</button>
+                                <button class="btn btn-excluir">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Taskschool &mdash; Projeto Educacional SENAC</p>
+            <p>Desenvolvido na disciplina de Desenvolvimento Frontend (UC2)</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taskschool - Estatísticas e cards das tarefas">
+    <title>Taskschool — Estatísticas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Taskschool</h1>
+            <p>Seu gerenciador de tarefas pessoal</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Login</a></li>
+                    <li><a href="nova-tarefa.html">Nova Tarefa</a></li>
+                    <li><a href="tabela.html">Tabela</a></li>
+                    <li><a href="cards.html">Cards</a></li>
+                    <li><a href="estatisticas.html">Estatísticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="estatisticas" class="secao-stats">
+                <h2>Estatísticas</h2>
+
+                <div class="grade-stats">
+                    <article class="stat-card">
+                        <h3>Total de Tarefas</h3>
+                        <p class="stat-numero" id="stat-total">10</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Pendentes</h3>
+                        <p class="stat-numero" id="stat-pendentes">5</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Em Andamento</h3>
+                        <p class="stat-numero" id="stat-andamento">1</p>
+                    </article>
+
+                    <article class="stat-card">
+                        <h3>Concluídas</h3>
+                        <p class="stat-numero" id="stat-concluidas">4</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="lista-tarefas" class="secao-lista">
+                <h2>Tarefas — Visão em Cards</h2>
+
+                <div id="cards-tarefas" class="grade-tarefas">
+                    <article class="card-tarefa prioridade-alta">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Estudar HTML Semântico</h3>
+                            <span class="badge badge-alta">Alta</span>
+                        </div>
+                        <p class="card-descricao">Revisar todas as tags semânticas do HTML5 e praticar com exercícios.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Estudo</span>
+                            <span class="card-data">Vence: 28/03/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status pendente">Pendente</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-media">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Criar layout com CSS Grid</h3>
+                            <span class="badge badge-media">Média</span>
+                        </div>
+                        <p class="card-descricao">Implementar o layout da página principal usando CSS Grid.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Trabalho</span>
+                            <span class="card-data">Vence: 30/03/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status pendente">Pendente</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-baixa concluida">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Instalar o VS Code</h3>
+                            <span class="badge badge-baixa">Baixa</span>
+                        </div>
+                        <p class="card-descricao">Instalar e configurar o editor de código Visual Studio Code.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Pessoal</span>
+                            <span class="card-data">Concluída</span>
+                        </div>
+                        <div class="card-status"><span class="status concluida">Concluída</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-alta">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Praticar Flexbox</h3>
+                            <span class="badge badge-alta">Alta</span>
+                        </div>
+                        <p class="card-descricao">Resolver exercícios práticos sobre display flex, alinhamento e distribuição.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Estudo</span>
+                            <span class="card-data">Vence: 29/03/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status pendente">Pendente</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-baixa concluida">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Configurar Git</h3>
+                            <span class="badge badge-baixa">Baixa</span>
+                        </div>
+                        <p class="card-descricao">Instalar o Git, configurar nome e e-mail globais.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Trabalho</span>
+                            <span class="card-data">Concluída</span>
+                        </div>
+                        <div class="card-status"><span class="status concluida">Concluída</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-media">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Fazer exercício de JavaScript</h3>
+                            <span class="badge badge-media">Média</span>
+                        </div>
+                        <p class="card-descricao">Completar os exercícios de variáveis, funções e manipulação do DOM.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Estudo</span>
+                            <span class="card-data">Vence: 02/04/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status pendente">Pendente</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-baixa concluida">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Organizar pasta do projeto</h3>
+                            <span class="badge badge-baixa">Baixa</span>
+                        </div>
+                        <p class="card-descricao">Criar estrutura de pastas e renomear arquivos do projeto.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Pessoal</span>
+                            <span class="card-data">Concluída</span>
+                        </div>
+                        <div class="card-status"><span class="status concluida">Concluída</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-alta">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Estudar responsividade</h3>
+                            <span class="badge badge-alta">Alta</span>
+                        </div>
+                        <p class="card-descricao">Aprender media queries e técnicas de design responsivo.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Estudo</span>
+                            <span class="card-data">Vence: 01/04/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status em-andamento">Em andamento</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-media concluida">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Criar repositório no GitHub</h3>
+                            <span class="badge badge-media">Média</span>
+                        </div>
+                        <p class="card-descricao">Criar o repositório remoto e conectar com o projeto local.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Trabalho</span>
+                            <span class="card-data">Concluída</span>
+                        </div>
+                        <div class="card-status"><span class="status concluida">Concluída</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+
+                    <article class="card-tarefa prioridade-baixa">
+                        <div class="card-cabecalho">
+                            <h3 class="card-titulo">Revisar anotações da aula</h3>
+                            <span class="badge badge-baixa">Baixa</span>
+                        </div>
+                        <p class="card-descricao">Reler e organizar as anotações das últimas aulas de frontend.</p>
+                        <div class="card-meta">
+                            <span class="card-categoria">Estudo</span>
+                            <span class="card-data">Vence: 03/04/2026</span>
+                        </div>
+                        <div class="card-status"><span class="status pendente">Pendente</span></div>
+                        <div class="card-acoes">
+                            <button class="btn btn-concluir">✓ Concluir</button>
+                            <button class="btn btn-editar">✏️ Editar</button>
+                            <button class="btn btn-excluir">🗑️ Excluir</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Taskschool &mdash; Projeto Educacional SENAC</p>
+            <p>Desenvolvido na disciplina de Desenvolvimento Frontend (UC2)</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taskschool - Cadastro de nova tarefa">
+    <title>Taskschool — Nova Tarefa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Taskschool</h1>
+            <p>Seu gerenciador de tarefas pessoal</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Login</a></li>
+                    <li><a href="nova-tarefa.html">Nova Tarefa</a></li>
+                    <li><a href="tabela.html">Tabela</a></li>
+                    <li><a href="cards.html">Cards</a></li>
+                    <li><a href="estatisticas.html">Estatísticas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="nova-tarefa" class="secao-form">
+                <h2>Cadastrar Nova Tarefa</h2>
+
+                <form id="tarefa-form" action="#" method="post">
+                    <div class="form-grupo">
+                        <label for="titulo">Título da Tarefa *</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Ex: Estudar HTML e CSS"
+                            required
+                            maxlength="100"
+                        >
+                        <small class="dica">Máximo 100 caracteres. Campo obrigatório.</small>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="descricao">Descrição</label>
+                        <textarea
+                            id="descricao"
+                            name="descricao"
+                            placeholder="Descreva os detalhes da tarefa (opcional)..."
+                            rows="4"
+                            maxlength="500"
+                        ></textarea>
+                        <small class="dica">Máximo 500 caracteres.</small>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="prioridade">Prioridade *</label>
+                        <select id="prioridade" name="prioridade" required>
+                            <option value="">Selecione a prioridade</option>
+                            <option value="alta">Alta</option>
+                            <option value="media">Média</option>
+                            <option value="baixa">Baixa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="vencimento">Data de Vencimento</label>
+                        <input type="date" id="vencimento" name="vencimento">
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="estudo">Estudo</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="pessoal">Pessoal</option>
+                            <option value="saude">Saúde</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="pendente">Pendente</option>
+                            <option value="em-andamento">Em andamento</option>
+                            <option value="concluida">Concluída</option>
+                        </select>
+                    </div>
+
+                    <div class="form-acoes">
+                        <button type="submit" class="btn btn-primario">Adicionar Tarefa</button>
+                        <button type="reset" class="btn btn-secundario">Limpar</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Taskschool &mdash; Projeto Educacional SENAC</p>
+            <p>Desenvolvido na disciplina de Desenvolvimento Frontend (UC2)</p>
+        </div>
+    </footer>
+</body>
+</html>

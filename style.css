@@ -19,16 +19,17 @@
   3.  Layout Geral (container)
   4.  Header
   5.  Navegação
-  6.  Formulário
-  7.  Controles (filtros e busca)
-  8.  Cards de Tarefas
-  9.  Tabela
-  10. Estatísticas
-  11. Footer
-  12. Badges e Status
-  13. Botões
-  14. Utilitários
-  15. Responsividade (Media Queries)
+  6.  Login
+  7.  Formulário
+  8.  Controles (filtros e busca)
+  9.  Cards de Tarefas
+  10. Tabela
+  11. Estatísticas
+  12. Footer
+  13. Badges e Status
+  14. Botões
+  15. Utilitários
+  16. Responsividade (Media Queries)
 */
 
 
@@ -229,7 +230,27 @@ nav a:hover {
 
 
 /* ================================================
-   6. FORMULÁRIO
+   6. LOGIN
+   ================================================
+   O formulário de login usa a mesma classe .secao-form
+   mas com largura reduzida para ficar centralizado.
+   max-width limita a largura; margin auto centraliza.
+   ================================================ */
+.secao-login {
+    max-width: 450px;       /* Largura máxima do box de login */
+    margin-left: auto;      /* Centraliza horizontalmente */
+    margin-right: auto;
+}
+
+/* No login, o form não precisa de grid de 2 colunas */
+.secao-login form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ================================================
+   7. FORMULÁRIO
    ================================================ */
 .secao-form {
     background-color: var(--cor-superfície);
@@ -308,7 +329,7 @@ textarea {
 
 
 /* ================================================
-   7. CONTROLES — FILTROS E BUSCA
+   8. CONTROLES — FILTROS E BUSCA
    ================================================ */
 .secao-controles {
     display: flex;
@@ -347,6 +368,19 @@ textarea {
     border-color: var(--cor-secundaria);
 }
 
+/* Label do grupo de filtros */
+.filtro-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
+    align-self: center;
+}
+
+/* Filtros acima da tabela: espaçamento inferior */
+.filtros-tabela {
+    margin-bottom: var(--espaco-lg);
+}
+
 /* Grupo de botões de filtro */
 .filtros {
     display: flex;
@@ -380,7 +414,7 @@ textarea {
 
 
 /* ================================================
-   8. CARDS DE TAREFAS — CSS GRID
+   9. CARDS DE TAREFAS — CSS GRID
    ================================================
    grid-template-columns com auto-fill e minmax cria
    um grid responsivo que se adapta ao espaço disponível.
@@ -472,6 +506,11 @@ textarea {
     margin-top: var(--espaco-xs);
 }
 
+/* Status dentro do card */
+.card-status {
+    margin-top: var(--espaco-xs);
+}
+
 /* Mensagem exibida quando não há tarefas */
 .mensagem-vazia {
     grid-column: 1 / -1;     /* Ocupa toda a largura do grid */
@@ -484,7 +523,7 @@ textarea {
 
 
 /* ================================================
-   9. TABELA DE TAREFAS
+   10. TABELA DE TAREFAS
    ================================================ */
 .secao-tabela {
     overflow-x: auto;   /* Scroll horizontal em telas pequenas */
@@ -547,7 +586,7 @@ tbody .btn {
 
 
 /* ================================================
-   10. ESTATÍSTICAS
+   11. ESTATÍSTICAS
    ================================================ */
 .grade-stats {
     display: grid;
@@ -589,7 +628,7 @@ tbody .btn {
 
 
 /* ================================================
-   11. FOOTER
+   12. FOOTER
    ================================================ */
 footer {
     background-color: var(--cor-primaria);
@@ -607,7 +646,7 @@ footer p {
 
 
 /* ================================================
-   12. BADGES — INDICADORES DE PRIORIDADE / STATUS
+   13. BADGES — INDICADORES DE PRIORIDADE / STATUS
    ================================================
    Badges são pequenas etiquetas coloridas para
    indicar estado ou categoria de um item.
@@ -634,12 +673,13 @@ footer p {
     font-weight: 600;
 }
 
-.status.pendente  { background-color: #FEF3C7; color: #92400E; }
-.status.concluida { background-color: #D1FAE5; color: #065F46; }
+.status.pendente     { background-color: #FEF3C7; color: #92400E; }
+.status.em-andamento { background-color: #DBEAFE; color: #1E40AF; }
+.status.concluida    { background-color: #D1FAE5; color: #065F46; }
 
 
 /* ================================================
-   13. BOTÕES
+   14. BOTÕES
    ================================================ */
 .btn {
     display: inline-flex;
@@ -713,7 +753,7 @@ footer p {
 
 
 /* ================================================
-   14. UTILITÁRIOS
+   15. UTILITÁRIOS
    ================================================
    Classes genéricas reutilizáveis em qualquer lugar.
    ================================================ */
@@ -728,7 +768,7 @@ main {
 
 
 /* ================================================
-   15. RESPONSIVIDADE — MEDIA QUERIES
+   16. RESPONSIVIDADE — MEDIA QUERIES
    ================================================
    Estratégia: Mobile First (base para mobile,
    progressivamente melhorado para telas maiores).
